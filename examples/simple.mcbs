@@ -1,0 +1,19 @@
+def main {
+    tp @a ~~~;
+    @s.monkey = 0;
+    say yo;
+    execute(as @a at @s) {
+        say hi;
+        @a.monkey = 1 + 2 * @s.monkey;
+        @r.balz = 69 - 2;
+        say Hello world;
+        say Wow!;
+        execute(as @r positioned ~~~) {
+            say I'm here!;
+        }
+    }
+    execute (as @s) {
+        tp @s ~~~;
+    }
+    say hello worldddd;
+}

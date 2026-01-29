@@ -1,0 +1,27 @@
+def main {
+    scoreboard objectives add ballz dummy;
+
+    execute (as @a[tag="ballz"] at @s unless entity @s[x=~,y=~1.8,z=~,dx=0,dy=0,dz=0]) {
+        scoreboard players add @s ballz 1;
+    }
+    execute (as @a[tag="ballz] at @s if entity @s[x=~,y=~1.8,z=~,dx=0,dy=0,dz=0]) {
+        scoreboard players set @s ballz 0;
+    }
+
+    execute (as @a[tag="ballz"] at @s) {
+        execute (as @s[scores={ballz=1}] at @s positioned ~~100~) {
+            summon armor_stand ~~~ facing ^^^10 name "armorBallz";
+        }
+    }
+
+    execute (as @e[type=armor_stand,name="armorBallz"] at @s) {
+        scoreboard players add @s ballz 1;
+        kill @s[scores={ballz=20..}];
+
+        tp @s ^^^1;
+        execute (as @s at @s positioned ~~-100~) {
+            particle minecraft:mobflame_single ~~~;
+            damage @e[r=2] 4 fire;
+        }
+    }
+}
