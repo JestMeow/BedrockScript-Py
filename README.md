@@ -43,7 +43,7 @@ def main {
 Example:
 ```
 @a.timer = 0;
-@e[name="Bob"] = 2 + @e[name="Alic",c=1];
+@e[name="Bob"].wins = 2 + @e[name="Alic",c=1].loss;
 ```
 
 ## Additional Info
